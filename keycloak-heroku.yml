@@ -1,0 +1,19 @@
+name: nextswift
+services:
+  keycloak:
+    build:
+      context: .
+      dockerfile: Dockerfile.heroku
+    environment:
+      - KC_PROXY=edge
+      - KC_HTTP_ENABLED=true
+      - KC_HOSTNAME=${HEROKU_APP_NAME}.herokuapp.com
+      - KC_HTTP_PORT=${PORT}
+      - DATABASE_URL=${DATABASE_URL}
+      - KEYCLOAK_ADMIN=${KEYCLOAK_ADMIN}
+      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
+      - KC_CACHE=enabled
+      - KC_CACHE_STACK=local
+      - JAVA_TOOL_OPTIONS="-Xmx512m"
+    ports:
+      - "${PORT}:${PORT}"
