@@ -25,7 +25,7 @@ ENV KC_PROXY=edge
 ENV KC_HTTP_ENABLED=true
 EXPOSE 8080
 ENV PROXY_ADDRESS_FORWARDING=true
-
+ENV KC_BOOTSTRAP_ADMIN_USERNAME=admin
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 CMD ["start", "--optimized"]
