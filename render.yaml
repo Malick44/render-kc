@@ -1,27 +1,14 @@
-# render.yaml
 services:
   - type: web
     name: keycloak
     runtime: docker
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./keycloak.Dockerfile
     region: oregon
     plan: standard
-    healthCheckPath: /auth/realms/master
+    healthCheckPath: /health
     envVars:
-      - key: KEYCLOAK_ADMIN
-        sync: false
-        value: badmin
       - key: KEYCLOAK_ADMIN_PASSWORD
         sync: false
-        value: badmin
-      - key: KC_DB
-        value: postgres
-      - key: KC_DB_URL
-        value: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DATABASE}
-      - key: KC_DB_USERNAME
-        value: ${POSTGRES_USER}
-      - key: KC_DB_PASSWORD
-        value: ${POSTGRES_PASSWORD}
       - key: POSTGRES_HOST
         sync: false
       - key: POSTGRES_DATABASE
@@ -30,14 +17,3 @@ services:
         sync: false
       - key: POSTGRES_PASSWORD
         sync: false
-      - key: KC_HOSTNAME
-        fromService:
-          name: keycloak
-          type: web
-          property: host
-      - key: KC_PROXY
-        value: edge
-      - key: KC_HTTP_ENABLED
-        value: "true"
-      - key: KC_HTTP_PORT
-        value: "8080"
