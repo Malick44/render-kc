@@ -1,32 +1,30 @@
-FROM quay.io/keycloak/keycloak:26.0.7 as builder
+# Dockerfile
 
-# Configure Keycloak
-ENV KC_DB=postgres
-ENV KC_FEATURES=scripts
+# --- Stage 1: Build Keycloak
+FROM  quay.io/keycloak/keycloak:latest AS build
+
+# Enable health and metrics support
 ENV KC_HEALTH_ENABLED=true
-ENV KC_TRANSACTION_XA_ENABLED=false
-ENV KC_CACHE=enabled
-ENV KC_CACHE_STACK=local
-ENV KC_PROXY=edge
-ENV KC_HTTP_ENABLED=true
-ENV KC_HOSTNAME_STRICT=false
+ENV KC_METRICS_ENABLED=true
 
-# Copy cache configuration
-COPY realm-config/cache-ispn.xml /opt/keycloak/conf/cache-ispn.xml
-
-# Build optimized
+WORKDIR /opt/keycloak
 RUN /opt/keycloak/bin/kc.sh build
 
-FROM quay.io/keycloak/keycloak:26.0.7
-COPY --from=builder /opt/keycloak/ /opt/keycloak/
-WORKDIR /opt/keycloak
+# --- Stage 2: Final Image
+FROM  quay.io/keycloak/keycloak:latest
 
-# Use port from Heroku environment variable
-CMD export KC_HTTP_PORT=${PORT:-8080} && \
-    /opt/keycloak/bin/kc.sh start-dev \
-    --http-enabled=true \
-    --hostname-strict=false \
-    --proxy=edge \
-    --db-url=${DATABASE_URL} \
-    --db-username=${DB_USER} \
-    --db-password=${DB_PASSWORD}
+# Copy from the build stage
+COPY --from=build /opt/keycloak/ /opt/keycloak/
+
+# Required Heroku config
+ENV KEYCLOAK_ADMIN=admin
+ENV KEYCLOAK_PASSWORD=admin
+ENV KC_HOSTNAME_STRICT=false
+ENV KC_HOSTNAME_STRICT_HTTPS=false
+ENV KC_PROXY=edge
+ENV KC_HTTP_ENABLED=true
+EXPOSE 8080
+ENV PROXY_ADDRESS_FORWARDING=true
+
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
+CMD ["start", "--optimized"]
