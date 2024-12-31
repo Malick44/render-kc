@@ -17,3 +17,6 @@ services:
         sync: false
       - key: POSTGRES_PASSWORD
         sync: false
+      - key: KEYCLOAK_PROXY_ADDRESS_FORWARDING
+        sync: false
+        value: "true"

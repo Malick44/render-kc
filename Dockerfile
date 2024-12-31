@@ -24,8 +24,6 @@ COPY --from=build /opt/keycloak/ /opt/keycloak/
 
 # Required Heroku config
 ENV PORT=8080
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_PASSWORD=4adminUser#
 ENV KC_HOSTNAME_STRICT=false
 ENV KC_HOSTNAME_STRICT_HTTPS=false
 ENV KC_PROXY=edge
