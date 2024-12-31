@@ -14,6 +14,7 @@ ENV KC_HOSTNAME_STRICT=false
 ENV KC_PROXY=edge
 ENV KC_CACHE=enabled
 ENV KC_CACHE_STACK=local
+ENV PROXY_ADDRESS_FORWARDING=true
 
 # Copy cache configuration
 COPY realm-config/cache-ispn.xml /opt/keycloak/conf/cache-ispn.xml
@@ -26,4 +27,4 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 
 # Set PostgreSQL as default database
-ENV KC_DB=postgres 
+ENV KC_DB=postgres
