@@ -10,7 +10,7 @@ ENV KC_METRICS_ENABLED=true
 # Configure database
 ENV KC_DB=postgres
 ENV KC_DB_URL="jdbc:postgresql://c67okggoj39697.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d7soqlidsno04j"
-ENV KC_DB_USERNAME="yu6kj4e3i1rcjlr"
+ENV KC_DB_USERNAME="u6kj4e3i1rcjlr"
 ENV KC_DB_PASSWORD="p96b27cb2e2cbaaf0d94d18ec3d764fa3034a871353ba86f07536e437c8a00001"
 
 WORKDIR /opt/keycloak
