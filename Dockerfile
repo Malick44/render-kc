@@ -27,4 +27,4 @@ EXPOSE 8080
 ENV PROXY_ADDRESS_FORWARDING=true
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
-CMD ["start" "--optimized" "--hostname-strict=false" "--proxy=edge"]
+CMD ["start", "--optimized"]
