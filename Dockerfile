@@ -32,5 +32,4 @@ ENV KC_DB=postgres
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", \
     "--http-enabled=true", \
     "--hostname-strict=false", \
-    "--proxy=edge", \
     "--cache=local"]
