@@ -11,6 +11,9 @@ services:
       - KC_HOSTNAME_STRICT=false
       - KC_PROXY=edge
       - KC_HTTP_ENABLED=true
+      - KC_HOSTNAME_ADMIN_URL=http://localhost:8080/auth
+      - KC_HOSTNAME_URL=http://localhost:8080/auth
+      - KC_HTTP_RELATIVE_PATH=/auth
     healthcheck:
       test: ["CMD", "/opt/keycloak/bin/keycloak-health-check.sh", "8080"]
       interval: 30s

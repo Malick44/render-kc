@@ -9,5 +9,5 @@ fi
 PORT=$1
 echo "Checking health on port $PORT"
 
-curl -f http://localhost:$PORT/health || exit 1
+curl -f http://localhost:$PORT/auth/health || exit 1
 echo "Health check passed"
