@@ -4,52 +4,14 @@
     xsi:schemaLocation="urn:infinispan:config:11.0 http://www.infinispan.org/schemas/infinispan-config-11.0.xsd"
     xmlns="urn:infinispan:config:11.0">
 
-    <cache-container name="keycloak" statistics="true">
-        <!-- Default cache settings -->
-        <local-cache name="default">
-            <memory>
-                <object size="10000"/>
-            </memory>
-        </local-cache>
-
-        <!-- Realms cache -->
+    <cache-container name="keycloak">
         <local-cache name="realms">
-            <memory>
-                <object size="1000"/>
-            </memory>
-            <expiration lifespan="3600000" max-idle="1800000"/>
+            <encoding>
+                <key media-type="application/x-java-object"/>
+                <value media-type="application/x-java-object"/>
+            </encoding>
+            <memory max-count="100"/>
         </local-cache>
-
-        <!-- Users cache -->
-        <local-cache name="users">
-            <memory>
-                <object size="10000"/>
-            </memory>
-            <expiration lifespan="3600000" max-idle="1800000"/>
-        </local-cache>
-
-        <!-- Authorization cache -->
-        <local-cache name="authorization">
-            <memory>
-                <object size="5000"/>
-            </memory>
-            <expiration lifespan="3600000" max-idle="1800000"/>
-        </local-cache>
-
-        <!-- Keys cache -->
-        <local-cache name="keys">
-            <memory>
-                <object size="1000"/>
-            </memory>
-            <expiration max-idle="3600000"/>
-        </local-cache>
-
-        <!-- Work cache -->
-        <local-cache name="work">
-            <memory>
-                <object size="1000"/>
-            </memory>
-            <expiration lifespan="3600000" max-idle="1800000"/>
-        </local-cache>
+        <!-- Add other required caches -->
     </cache-container>
 </infinispan> 

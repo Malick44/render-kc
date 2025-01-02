@@ -15,6 +15,7 @@ ENV KC_PROXY=edge
 ENV KC_CACHE=enabled
 ENV KC_CACHE_STACK=local
 ENV PROXY_ADDRESS_FORWARDING=true
+ENV KC_HTTP_PORT=8080
 
 # Copy cache configuration
 COPY realm-config/cache-ispn.xml /opt/keycloak/conf/cache-ispn.xml
@@ -28,3 +29,6 @@ WORKDIR /opt/keycloak
 
 # Set PostgreSQL as default database
 ENV KC_DB=postgres
+
+# Add the start command with explicit port
+CMD ["start", "--http-enabled=true", "--hostname-strict=false", "--proxy=edge", "--cache=local", "--optimized", "--http-port=8080"]
