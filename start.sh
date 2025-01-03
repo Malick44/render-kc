@@ -1,13 +1,12 @@
 #!/bin/bash
-set -e
+cd /opt/keycloak
 
+# Start Keycloak in HTTP mode and import realm
 /opt/keycloak/bin/kc.sh start \
-    --optimized \
-    --proxy edge \
-    --db postgres \
-    --db-url "${KC_DB_URL}" \
-    --db-username "${KC_DB_USERNAME}" \
-    --db-password "${KC_DB_PASSWORD}" \
-    --http-enabled=true \
+    --hostname="0.0.0.0" \
+    --http-relative-path="/auth" \
     --http-port=8080 \
-    --import-realm
+    --hostname-url="${KEYCLOAK_HOSTNAME_URL}"  \
+    --http-enabled=true \
+    --spi-cluster-jgroups-stack=kubernetes \
+    --import-realm --realm-file=/opt/keycloak/realm.json
