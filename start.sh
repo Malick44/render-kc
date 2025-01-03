@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /opt/keycloak
 
 # Start Keycloak in HTTP mode and import realm
 /opt/keycloak/bin/kc.sh start \
