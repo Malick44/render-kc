@@ -9,4 +9,5 @@ cd /opt/keycloak
     --http-enabled=true \
     --spi-cluster-jgroups-stack=kubernetes \
     --import-realm --realm-file=/opt/keycloak/realm.json \
-    --hostname="${KEYCLOAK_HOSTNAME_URL}"
+    --hostname="${KEYCLOAK_HOSTNAME_URL}" \
+    --hostname-strict=false
