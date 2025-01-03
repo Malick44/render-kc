@@ -14,10 +14,10 @@ RUN /opt/keycloak/bin/kc.sh build
 FROM quay.io/keycloak/keycloak:latest
 ENV KC_HEALTH_ENABLED=true
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
-
+COPY ./realm.json /opt/keycloak/
 EXPOSE 8080
 USER root
 COPY ./start.sh /opt/keycloak/
 RUN chmod +x /opt/keycloak/start.sh
 USER 1000
-CMD ["/bin/bash", "-c", "cd /opt/keycloak && /opt/keycloak/start.sh"]
+CMD ["/bin/bash","-c","/opt/keycloak/start.sh"]
