@@ -3,7 +3,7 @@ cd /opt/keycloak
 
 # Start Keycloak in HTTP mode and import realm
 /opt/keycloak/bin/kc.sh start \
-    --hostname="0.0.0.0" \
+    --optimized
     --http-relative-path="/auth" \
     --http-port=8080 \
     --http-enabled=true \
