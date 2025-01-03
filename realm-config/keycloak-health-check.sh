@@ -1,13 +1,12 @@
 #!/bin/bash
-set -e
+exec 3<>/dev/tcp/localhost/9990
 
-if [ -z "$1" ]; then
-    echo "No port specified"
-    exit 1
-fi
+echo -e "GET /health/ready HTTP/1.1\nhost: localhost:9990\n" >&3
 
-PORT=$1
-echo "Checking health on port $PORT"
+timeout --preserve-status 1 cat <&3 | grep -m 1 status | grep -m 1 UP
+ERROR=$?
 
-curl -f http://localhost:$PORT/auth/health || exit 1
-echo "Health check passed"
+exec 3<&-
+exec 3>&-
+
+exit $ERROR
