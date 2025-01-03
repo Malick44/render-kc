@@ -11,7 +11,7 @@ WORKDIR /opt/keycloak
 RUN /opt/keycloak/bin/kc.sh build
 
 
-FROM quay.io/keycloak/keycloak:22.0.5
+FROM quay.io/keycloak/keycloak:26.0.7
 ENV KC_HEALTH_ENABLED=true
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
