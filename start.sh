@@ -1,5 +1,8 @@
 #!/bin/bash
 cd /opt/keycloak
+echo "KC_BOOTSTRAP_ADMIN_USERNAME is '$KC_BOOTSTRAP_ADMIN_USERNAME'"
+echo "KC_BOOTSTRAP_ADMIN_PASSWORD is '$KC_BOOTSTRAP_ADMIN_PASSWORD'"
+
 
 # Start Keycloak in HTTP mode and import realm
 /opt/keycloak/bin/kc.sh start \
