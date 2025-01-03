@@ -20,4 +20,5 @@ USER root
 COPY ./start.sh /opt/keycloak/
 RUN chmod +x /opt/keycloak/start.sh
 USER 1000
-CMD ["/bin/bash","-c","/opt/keycloak/start.sh"]
+ENTRYPOINT ["opt/keycloak"]
+CMD ["/start.sh"]
