@@ -3,22 +3,22 @@ services:
     name: keycloak
     env: docker
     dockerfilePath: Dockerfile
-    envVars:
-      - name: KC_BOOTSTRAP_ADMIN_USERNAME
-        value: admin
-      - name: KC_BOOTSTRAP_ADMIN_PASSWORD
-        value: myKeycloakpa23
-      - name: DB_URL
-        value: jdbc:postgresql://c67okggoj39697.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d7soqlidsno04j
-      - name: DB_USERNAME
-        value: u6kj4e3i1rcjlr
-      - name: DB_PASSWORD
-        value: p96b27cb2e2cbaaf0d94d18ec3d764fa3034a871353ba86f07536e437c8a00001
-      - name: DB_POOL_INITIAL_SIZE
-        value: "5"
-      - name: DB_POOL_MIN_SIZE
-        value: "5"
-      - name: DB_POOL_MAX_SIZE
-        value: "50"
-      - name: KEYCLOAK_HOSTNAME_URL
-        value: https://render-kc-gdz6.onrender.com/auth
+    # envVars:
+    #   - name: KC_BOOTSTRAP_ADMIN_USERNAME
+    #     value: admin
+    #   - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+    #     value: myKeycloakpa23
+    #   - name: DB_URL
+    #     value: jdbc:postgresql://c67okggoj39697.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d7soqlidsno04j
+    #   - name: DB_USERNAME
+    #     value: u6kj4e3i1rcjlr
+    #   - name: DB_PASSWORD
+    #     value: p96b27cb2e2cbaaf0d94d18ec3d764fa3034a871353ba86f07536e437c8a00001
+    #   - name: DB_POOL_INITIAL_SIZE
+    #     value: "5"
+    #   - name: DB_POOL_MIN_SIZE
+    #     value: "5"
+    #   - name: DB_POOL_MAX_SIZE
+    #     value: "50"
+    #   - name: KEYCLOAK_HOSTNAME_URL
+    #     value: https://render-kc-gdz6.onrender.com/auth
