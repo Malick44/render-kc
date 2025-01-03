@@ -8,5 +8,4 @@ cd /opt/keycloak
     --http-port=8080 \
     --http-enabled=true \
     --spi-cluster-jgroups-stack=kubernetes \
-    --import-realm --realm-file=/opt/keycloak/realm.json \
-    --optimized
+    --import-realm --realm-file=/opt/keycloak/realm.json
