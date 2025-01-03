@@ -1,11 +1,24 @@
-#!/bin/bash
+FROM quay.io/keycloak/keycloak:26.0.0 as builder
 
-# Start Keycloak in HTTP mode and import realm
-/opt/keycloak/bin/kc.sh start \
-    --hostname="0.0.0.0" \
-    --http-relative-path="/auth" \
-    --http-port=8080 \
-    --hostname-url="${KEYCLOAK_HOSTNAME_URL}"  \
-    --http-enabled=true \
-    --spi-cluster-jgroups-stack=kubernetes \
-    --import-realm --realm-file=/opt/keycloak/realm.json
+#Enable extensions dir
+ENV KC_EXTENSIONS_DIR=/opt/keycloak/providers
+
+#Add extensions (if any)
+#COPY target/keycloak-extensions/*.jar  ${KC_EXTENSIONS_DIR}
+
+WORKDIR /opt/keycloak
+
+RUN /opt/keycloak/bin/kc.sh build
+
+
+FROM quay.io/keycloak/keycloak:26.0.7
+ENV KC_HEALTH_ENABLED=true
+COPY --from=builder /opt/keycloak/ /opt/keycloak/
+COPY ./realm.json /opt/keycloak/
+EXPOSE 8080
+USER root
+COPY ./start.sh /opt/keycloak/
+RUN chmod +x /opt/keycloak/start.sh
+USER 1000
+ENTRYPOINT ["/bin/bash"]
+CMD ["/opt/keycloak/start.sh"]
