@@ -9,7 +9,9 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 COPY start.sh .
 COPY realm-config/realm.json data/import/
+USER root
 RUN chmod +x start.sh
+USER 1000
 
 EXPOSE 8080
 ENTRYPOINT ["./start.sh"]
