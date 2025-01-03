@@ -33,4 +33,4 @@ WORKDIR /opt/keycloak
 ENV KC_DB=postgres
 
 # Add the start command with explicit port and path
-CMD ["start", "--http-enabled=true", "--hostname-strict=false", "--proxy=edge", "--cache=local", "--optimized", "--http-port=8080", "--http-relative-path=/auth"]
+CMD ["start", "--http-enabled=true", "--hostname-strict=false", "--cache=local", "--optimized", "--http-port=8080", "--http-relative-path=/auth"]
