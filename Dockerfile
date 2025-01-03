@@ -1,7 +1,23 @@
-FROM quay.io/keycloak/keycloak:26.0.7
+FROM quay.io/keycloak/keycloak:22.0.5 as builder
 
-COPY realm-config/keycloak-health-check.sh /opt/keycloak/health-check.sh
-COPY --chmod=755 realm-config/keycloak-health-check.sh /opt/keycloak/health-check.sh
+#Enable extensions dir
+#ENV KC_EXTENSIONS_DIR=/opt/keycloak/providers
+
+#Add extensions (if any)
+#COPY target/keycloak-extensions/*.jar  ${KC_EXTENSIONS_DIR}
+
+WORKDIR /opt/keycloak
+
+RUN /opt/keycloak/bin/kc.sh build
 
 
-EXPOSE 9080 9443 9990
+FROM quay.io/keycloak/keycloak:22.0.5
+ENV KC_HEALTH_ENABLED=true
+COPY --from=builder /opt/keycloak/ /opt/keycloak/
+
+EXPOSE 8080
+USER root
+COPY ./start.sh /opt/keycloak/
+RUN chmod +x /opt/keycloak/start.sh
+USER 1000
+CMD ["/opt/keycloak/start.sh"]
