@@ -6,4 +6,5 @@
     --http-relative-path="/auth" \
     --http-port=8080 \
     --hostname-url="${KEYCLOAK_HOSTNAME_URL}"  \
-    --http-enabled=true
+    --http-enabled=true \
+    --spi-cluster-jgroups-stack=kubernetes
