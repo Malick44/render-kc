@@ -3,6 +3,12 @@ services:
     name: keycloak
     env: docker
     envVars:
+      - name: KC_DB
+        value: postgres
+      - name: KC_HEALTH_ENABLED
+        value: "true"
+      - name: KC_METRICS_ENABLED
+        value: "true"
       - name: KC_DB_URL
         value: jdbc:postgresql://roundhouse.proxy.rlwy.net:25256/railway
       - name: KC_DB_USERNAME
