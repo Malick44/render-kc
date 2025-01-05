@@ -5,4 +5,4 @@ cd /opt/keycloak
     --optimized \
     --http-enabled=true \
     --hostname-strict=false \
-    --hostname="$KC_HOSTNAME"
+    --hostname="render-kc-gdz6.onrender.com"
