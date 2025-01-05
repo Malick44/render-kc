@@ -7,7 +7,6 @@ cd /opt/keycloak
     --http-enabled=true \
     --hostname-strict=false \
     --proxy-headers=xforwarded \
-    --hostname="https://render-kc-gdz6.onrender.com" \
     --db-url-port="25256" \
     --hostname="${KC_HOSTNAME}" \
     --db-url="${KC_DB_URL}" \
