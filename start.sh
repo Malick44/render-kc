@@ -10,6 +10,5 @@ cd /opt/keycloak
     --db-url-port="25256" \
     --db-url="jdbc:postgresql://roundhouse.proxy.rlwy.net:25256/railway" \
     --db-username="postgres" \
-    
     --db-password="DtuPFvzJPWTuGPZBTUCdIePiAXImqxPT"
 
