@@ -11,9 +11,10 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 
 # Environment variables
-ENV KC_PROXY=edge
 ENV KC_HTTP_ENABLED=true
 ENV KC_HTTP_PORT=8080
+ENV KEYCLOAK_ADMIN=admin
+ENV KEYCLOAK_ADMIN_PASSWORD=admin
 
 COPY start.sh .
 USER root
