@@ -15,13 +15,17 @@ services:
         value: DtuPFvzJPWTuGPZBTUCdIePiAXImqxPT
       - name: KC_DB_SCHEMA
         value: public
-      - name: KC_HOSTNAME
-        value: render-kc-gdz6.onrender.com
-      - name: KC_HOSTNAME_ADMIN
-        value: render-kc-gdz6.onrender.com
-      - name: KC_HOSTNAME_URL
-        value: https://render-kc-gdz6.onrender.com
-      - name: KC_HOSTNAME_STRICT_BACKCHANNEL
-        value: "false"
+      - name: KEYCLOAK_ADMIN
+        value: admin
+      - name: KEYCLOAK_ADMIN_PASSWORD
+        value: myKeycloakpa23
       - name: KC_HTTP_ENABLED
         value: "true"
+      - name: KC_HTTP_PORT
+        value: "8080"
+      - name: KC_HOSTNAME_URL
+        value: https://render-kc-gdz6.onrender.com
+      - name: KC_HOSTNAME_ADMIN_URL
+        value: https://render-kc-gdz6.onrender.com
+      - name: KC_PROXY
+        value: passthrough
