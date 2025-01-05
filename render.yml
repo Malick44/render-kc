@@ -14,7 +14,7 @@ services:
       - name: KC_DB_PASSWORD
         value: DtuPFvzJPWTuGPZBTUCdIePiAXImqxPT
       - name: KC_DB_SCHEMA
-        value: public
+        value: ke
       - name: KEYCLOAK_ADMIN
         value: admin
       - name: KEYCLOAK_ADMIN_PASSWORD
