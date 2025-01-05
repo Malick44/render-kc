@@ -10,7 +10,6 @@ cd /opt/keycloak
     --db-url-port="25256" \
     --db-url="jdbc:postgresql://roundhouse.proxy.rlwy.net:25256/railway" \
     --db-username="postgres" \
-    --hostname-url=https://render-kc-gdz6.onrender.com/auth \
     --hostname-admin=https://render-kc-gdz6.onrender.com/auth \
     --db-password="DtuPFvzJPWTuGPZBTUCdIePiAXImqxPT"
 
