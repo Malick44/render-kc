@@ -1,14 +1,16 @@
 FROM quay.io/keycloak/keycloak:26.0.7 as builder
 
-
-RUN /opt/keycloak/bin/kc.sh build
+# Build the optimized version with required features
+RUN /opt/keycloak/bin/kc.sh build \
+    --db=postgres \
+    --health-enabled=true \
+    --metrics-enabled=true
 
 FROM quay.io/keycloak/keycloak:26.0.7
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 
-ENV KEYCLOAK_ADMIN=admin
-ENV KEYCLOAK_ADMIN_PASSWORD=admin
+# Environment variables
 ENV KC_PROXY=edge
 ENV KC_HTTP_ENABLED=true
 ENV KC_HTTP_PORT=8080
