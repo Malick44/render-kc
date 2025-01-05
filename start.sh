@@ -5,7 +5,7 @@ cd /opt/keycloak
 /opt/keycloak/bin/kc.sh start \
     --optimized \
     --hostname="${KC_HOSTNAME}" \
-    --http-relative-path=/auth \
+    # --http-relative-path=/auth \
     --http-port=8080 \
     --http-enabled=true \
     --proxy=edge \
