@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:22.0.3 as builder
+FROM quay.io/keycloak/keycloak:26.0.7 as builder
 
 # Build the optimized version with required features
 RUN /opt/keycloak/bin/kc.sh build \
@@ -6,7 +6,7 @@ RUN /opt/keycloak/bin/kc.sh build \
     --health-enabled=true \
     --metrics-enabled=true
 
-FROM quay.io/keycloak/keycloak:22.0.3
+FROM quay.io/keycloak/keycloak:26.0.7
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 WORKDIR /opt/keycloak
 
