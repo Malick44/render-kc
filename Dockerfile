@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:26.0.7 as builder
+FROM quay.io/keycloak/keycloak:26.2.0 as builder
 
 # Build the optimized version with required features
 RUN /opt/keycloak/bin/kc.sh build \
