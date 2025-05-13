@@ -15,14 +15,6 @@ ENV KC_HTTP_ENABLED=true
 ENV KC_HTTP_PORT=8080
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
-ENV KC_SPI_THEME_DEFAULT=modern-theme
-ENV KC_SPI_THEME_WELCOME_THEME=modern-theme
-ENV KC_SPI_THEME_CACHE_THEMES=false
-ENV KC_SPI_THEME_CACHE_TEMPLATES=false
-ENV KC_SPI_THEME_STATIC_MAX_AGE=-1
-
-# Copy custom theme files
-COPY themes/modern-theme /opt/keycloak/themes/modern-theme
 
 COPY start.sh .
 USER root
