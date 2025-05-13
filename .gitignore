@@ -1,4 +1,16 @@
-# .gitignore
+/Users/malickdes/WorkSpace/render-kc/
+├── themes/
+│   └── modern-theme/
+│       ├── login/
+│       │   ├── resources/
+│       │   │   ├── css/
+│       │   │   │   └── styles.css
+│       │   │   └── js/
+│       │   │       └── script.js
+│       │   ├── template.ftl
+│       │   └── theme.properties
+│       └── common/
+│           └── resources/# .gitignore
 .env
 *.log
 node_modules/
